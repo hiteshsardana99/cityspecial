@@ -3,8 +3,8 @@ const express     = require('express');
 const redirect    = require('express-redirect');
 const mongoose    = require('mongoose');
 const bodyParser  = require('body-parser');
-const cors        = require('cors');
-const helmet      = require('helmet');
+// const cors        = require('cors');
+// const helmet      = require('helmet');
 const path        = require('path');
 //custome libraries
 const apiRoute    = require('./routes/api');
@@ -29,8 +29,8 @@ mongoose.connection.openUri(keys.MongoURL, { useNewUrlParser: true }, (err,db) =
 //Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(helmet());
-app.use(cors());
+// app.use(helmet());
+// app.use(cors());
 app.use(express.static(__dirname));
 
 app.get('/*', (req,res) => {

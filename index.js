@@ -33,7 +33,8 @@ app.use(helmet());
 app.use(cors());
 
 
-app.get('/', (req,res) => {
+app.get('/*', (req,res) => {
+    console.log('reach');
     res.json({'a':100});
 });
 
@@ -42,7 +43,7 @@ app.use('/api', apiRoute);
 
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 //initalize server
 app.listen(port, () => {

@@ -5,7 +5,7 @@ const mongoose    = require('mongoose');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
 const helmet      = require('helmet');
-
+const path        = require('path');
 //custome libraries
 const apiRoute    = require('./routes/api');
 const keys        = require('./config/keys');
@@ -31,11 +31,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(helmet());
 app.use(cors());
-
+app.use(express.static(__dirname));
 
 app.get('/*', (req,res) => {
-    console.log('reach');
-    res.json({'a':100});
+    console.log('open landing page');
+    res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
 //redirect route

@@ -33,7 +33,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.static(__dirname));
 
-app.get('/*', (req,res) => {
+app.get('/', (req,res) => {
     console.log('open landing page');
     res.sendFile(path.join(__dirname+'/views/index.html'));
 });

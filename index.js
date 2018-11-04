@@ -32,6 +32,11 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(cors());
 
+
+app.get('/', (req,res) => {
+    res.json({'a':100});
+});
+
 //redirect route
 app.use('/api', apiRoute);
 

@@ -7,6 +7,7 @@ const router  = express.Router();
 const NewsController      = require('../../controllers/newsController');
 const AccountController   = require('../../controllers/accountController');
 const ReporterController  = require('../../controllers/reporterController');
+const AdminController     = require('../../controllers/AdminController');
 
 //--------------------------- News -----------------------------------
 router.get('/fetchNews', NewsController.getApprovedNews );
@@ -26,6 +27,8 @@ router.post('/createReporter', AccountController.createReporterAccount);
 router.get('/viewAllReporters', ReporterController.viewAllReporters);
 router.get('/viewReporter/:id', ReporterController.viewReporterProfileById);
 
+//------------------------- Admin --------------------------------------
 
+router.get('/viewAdminProfile', AdminController.viewAdminProfile);
 
 module.exports = router;

@@ -9,7 +9,7 @@ exports.viewReporterProfileById = function(req,res) {
 
   if(reporterId != null && typeof reporterId == 'string') {
 
-      Reporter.findOne({'_id' : reporterId}).then( (existingReporter) => {
+      Reporter.findOne({'_id' : reporterId},{'reporterPassword' : 0}).then( (existingReporter) => {
           if(existingReporter){
             console.log('Reporter profile Successfully found');
             res.status(200).json({'status' : 200 , 'detail' : existingReporter});
@@ -33,7 +33,7 @@ exports.viewReporterProfile = function(req,res) {
 
   if(reporterId != null) {
 
-      Reporter.findOne({'_id' : reporterId}).then( (existingReporter) => {
+      Reporter.findOne({'_id' : reporterId},{'reporterPassword' : 0}).then( (existingReporter) => {
           if(existingReporter){
             console.log('Reporter profile Successfully found');
             res.status(200).json({'status' : 200 , 'detail' : existingReporter});
@@ -53,7 +53,7 @@ exports.viewReporterProfile = function(req,res) {
 
 exports.viewAllReporters = function(req,res) {
 
-      Reporter.find({}).then( (existingReporter) => {
+      Reporter.find({},{'reporterPassword' : 0}).then( (existingReporter) => {
           if(existingReporter){
             console.log('Reporter profile Successfully found');
             res.status(200).json({'status' : 200 , 'detail' : existingReporter});

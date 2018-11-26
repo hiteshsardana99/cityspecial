@@ -7,7 +7,7 @@ const router  = express.Router();
 const NewsController      = require('../../controllers/newsController');
 const AccountController   = require('../../controllers/accountController');
 const ReporterController  = require('../../controllers/reporterController');
-const AdminController     = require('../../controllers/AdminController');
+const AdminController     = require('../../controllers/adminController');
 
 //--------------------------- News -----------------------------------
 router.get('/fetchNews', NewsController.getApprovedNews );

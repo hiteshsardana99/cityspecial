@@ -81,9 +81,21 @@ exports.createAdminAccount = (req,res) => {
   var adminUserName = req.body.adminUserName;
   var password = req.body.password;
   var adminName = req.body.adminName;
+  var emailId = req.body.emailId;
+  var address = req.body.address;
+  var phoneNum = req.body.phoneNum;
 
-  if( adminUserName != null && password != null && adminName != null && typeof adminUserName == 'string' && typeof password == 'string' && typeof adminName == 'string' ){
-      Admin.create({'adminUserName' : adminUserName , 'adminPassword' : password, 'adminName' : adminName}, function(err,response) {
+  if( adminUserName != null && password != null && adminName != null && emailId != null && address != null && phoneNum != null
+    && typeof adminUserName == 'string' && typeof password == 'string' && typeof adminName == 'string' && typeof emailId == 'string' && typeof address == 'string', typeof phoneNum == 'number'){
+
+      Admin.create({
+        'adminUserName' : adminUserName ,
+        'adminPassword' : password,
+        'adminName' : adminName,
+        'adminEmailId' : emailId,
+        'adminAddress' : address,
+        'adminPhoneNum' : phoneNum
+      }, function(err,response) {
         if(err){
           console.log(err);
           res.status(500).json({'status' : 500, 'detail' : 'Internal server error'});
@@ -113,16 +125,21 @@ exports.createReporterAccount = (req,res) => {
   var password = req.body.password;
   var name = req.body.name;
   var emailId = req.body.emailId;
+  var address = req.body.address;
+  var phoneNum = req.body.phoneNum;
   var adminId = req.adminId;
 
-  if( userName != null && password != null && name != null && emailId != null && adminId != null &&
-    typeof userName == 'string' && typeof password == 'string' && typeof name == 'string' && typeof emailId == 'string' ){
+
+  if( userName != null && password != null && name != null && emailId != null && adminId != null && address != null && phoneNum != null &&
+    typeof userName == 'string' && typeof password == 'string' && typeof name == 'string' && typeof emailId == 'string' && typeof address == 'string' && typeof phoneNum == 'number' ){
       Reporter.create(
         { 'reporterUserName' : userName ,
           'reporterPassword' : password,
           'reporterName' : name,
           'reporterEmailId' :  emailId,
           'createdOn' : new Date(Date.now()),
+          'reporterPhoneNumber' : phoneNum,
+          'reporterAddress' : address,
           'createdBy' : adminId },
             function(err,response) {
         if(err){

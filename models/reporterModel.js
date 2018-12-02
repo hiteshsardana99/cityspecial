@@ -19,6 +19,8 @@ const reporterSchema = new Schema({
     type : String,
     required : true
   },
+  reporterPhoneNumber : Number,
+  reporterAddress : String,
   createdOn : {
     type : Date,
     default : new Date(Date.now())

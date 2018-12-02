@@ -129,3 +129,8 @@ exports.modifyNewsStatus = (req,res) => {
     res.status(400).json({'status' : 400 , 'detail' : 'Invalid json received'});
   }
 };
+
+//upload image
+exports.uploadNewsImage = (req,res) => {
+
+}

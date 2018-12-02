@@ -14,6 +14,18 @@ const adminSchema = new Schema({
   adminName : {
     type : String,
     required : true
+  },
+  adminAddress : {
+    type : String,
+    required : true
+  },
+  adminPhoneNum : {
+    type : Number,
+    required : true
+  },
+  adminEmailId : {
+    type : String,
+    required : true
   }
 });
 

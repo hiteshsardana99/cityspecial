@@ -148,8 +148,11 @@ exports.uploadNewsImage = (req,res) => {
           res.status(400).json({'status' : 400, 'detail' : 'No file selected'});
       }
       else {
+
+          var imageName = req.file.filename;
+
           Image.create({
-            'imageName' : req.file.filename,
+            'imageName' : imageName,
             'reporterId' : reporterId,
             'adminId' :   adminId
           }, function(err,response){

@@ -12,6 +12,7 @@ const ReporterController  = require('../../controllers/reporterController');
 router.get('/fetchNews', NewsController.getApprovedNews );
 router.get('/fetchMyNews', NewsController.getReporterNews );
 router.post('/addNews', NewsController.addNews );
+router.post('/uploadImage', NewsController.uploadNewsImage);
 
 //------------------------- Account ----------------------------------
 router.post('/login', AccountController.reporterLogin);

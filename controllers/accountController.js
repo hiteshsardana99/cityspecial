@@ -47,8 +47,6 @@ exports.reporterLogin = (req,res) => {
     var userName = req.body.userName;
     var password = req.body.password;
 
-    console.log(userName,password);
-
     if(userName != null && password != null && typeof userName == 'string' && typeof password == 'string') {
         Reporter.findOne({'reporterUserName' : userName, 'reporterPassword' : password}, (err,resp) => {
           if(err) {

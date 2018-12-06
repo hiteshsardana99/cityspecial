@@ -1,6 +1,7 @@
 
-
+const Image = require('../models/imageModel');
 const News = require('../models/newsModel');
+const ImageHelper = require('../helper/ImageHelper');
 
 /*
   newsType - food','sports','business','entertainment','politics'
@@ -133,4 +134,43 @@ exports.modifyNewsStatus = (req,res) => {
 //upload image
 exports.uploadNewsImage = (req,res) => {
 
+  var reporterId = req.reporterId;
+  var adminId = req.adminId;
+
+  ImageHelper.uploadImage(req,res, (err) => {
+    if(err){
+      console.log(err);
+      res.status(500).json({'status' : 500, 'detail' : 'Internal server error'});
+    }
+    else {
+      if( req.file == undefined) {
+          console.log('No file selected');
+          res.status(400).json({'status' : 400, 'detail' : 'No file selected'});
+      }
+      else {
+          Image.create({
+            'imageName' : req.file.filename,
+            'reporterId' : reporterId,
+            'adminId' :   adminId
+          }, function(err,response){
+              if(err){
+                console.log(err);
+                res.status(200).json({
+                  'status' : 200,
+                  'detail' : 'Image uploaded but failed to save image name',
+                  'imageUrl' : 'https://cityspecial.herokuapp.com/'+imageName
+                 });
+              }
+              else{
+                console.log('Image successfully uploaded and saved');
+                res.status(200).json({
+                  'status' : 200,
+                  'detail' : 'Image uploaded and successfully saved',
+                  'imageUrl' : 'https://cityspecial.herokuapp.com/'+imageName
+                });
+              }
+          });
+      }
+    }
+  });
 }

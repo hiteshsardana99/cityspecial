@@ -38,6 +38,13 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
+//fetch public resources
+app.get('/:id', (req,res) => {
+  var fileName = req.params.id;
+  res.sendFile(path.join(__dirname, "public/images/" + fileName));
+});
+
+
 //redirect route
 app.use('/api', apiRoute);
 

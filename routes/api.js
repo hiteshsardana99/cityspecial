@@ -19,12 +19,12 @@ router.use('/admin', adminRoutes);
 router.use('/reporter', reporterRoutes);
 
 
-// router.use((req,res,next) => {
-//   res.header('Access-Control-Allow-Origin' , '*');
-//   res.header('Access-Control-Allow-Methods' , 'GET, POST');
-//   res.header('Access-Control-Allow-Headers' ,'Content-Type, authorization, Content-Length, X-Requested-With');
-//   next();
-// });
+router.use((req,res,next) => {
+  res.header('Access-Control-Allow-Origin' , '*');
+  res.header('Access-Control-Allow-Methods' , 'GET, POST');
+  res.header('Access-Control-Allow-Headers' ,'Content-Type, authorization, Content-Length, X-Requested-With');
+  next();
+});
 
 
 module.exports = router;

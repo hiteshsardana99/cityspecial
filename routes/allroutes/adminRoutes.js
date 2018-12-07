@@ -14,7 +14,7 @@ router.get('/fetchNews', NewsController.getApprovedNews );
 router.get('/fetchAllNews', NewsController.getNews );
 router.post('/addNews', NewsController.addNews );
 router.post('/modifyNewsStatus', NewsController.modifyNewsStatus );
-
+router.post('/uploadImage', NewsController.uploadNewsImage);
 
 //------------------------- Account ----------------------------------
 router.post('/login', AccountController.adminLogin);

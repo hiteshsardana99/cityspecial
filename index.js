@@ -38,9 +38,9 @@ app.use(express.static(__dirname));
 //display log to console
 app.use(morgan('dev'))
 //generate logs
-app.use(morgan('common' , {
-  stream : fs.createWriteStream(path.join(__dirname,'logs/access.log'), {flags : 'a'})
-}))
+// app.use(morgan('common' , {
+//   stream : fs.createWriteStream(path.join(__dirname,'logs/access.log'), {flags : 'a'})
+// }))
 
 
 app.get('/', (req,res) => {

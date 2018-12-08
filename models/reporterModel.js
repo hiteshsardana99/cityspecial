@@ -19,7 +19,11 @@ const reporterSchema = new Schema({
     type : String,
     required : true
   },
-  reporterPhoneNumber : Number,
+  reporterPhoneNumber : {
+    type : String,
+    minlength : 10,
+    maxlength : 10
+  },
   reporterAddress : String,
   createdOn : {
     type : Date,

@@ -6,6 +6,8 @@ const bodyParser  = require('body-parser');
 const cors        = require('cors');
 const helmet      = require('helmet');
 const path        = require('path');
+const morgan      = require('morgan');
+const fs          = require('fs');
 //custome libraries
 const apiRoute    = require('./routes/api');
 const keys        = require('./config/keys');
@@ -32,6 +34,14 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(cors());
 app.use(express.static(__dirname));
+
+//display log to console
+app.use(morgan('dev'))
+//generate logs
+app.use(morgan('common' , {
+  stream : fs.createWriteStream(path.join(__dirname,'logs/access.log'), {flags : 'a'})
+}))
+
 
 app.get('/', (req,res) => {
     console.log('open landing page');
